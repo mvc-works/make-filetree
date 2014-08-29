@@ -12,11 +12,14 @@ exports.make = (base, files) ->
 
   for file, content of files
     filepath = path.join base, file
-    if fs.existsSync filepath
-      console.warn "exists path <#{filepath}>"
-      return
     if (typeof content) is 'string'
-      fs.writeFileSync filepath, content
+      if fs.existsSync filepath
+        console.warn "exists file <#{filepath}>"
+      else
+        fs.writeFileSync filepath, content
     else if (typeof content) is 'object'
-      fs.mkdirSync filepath
+      if fs.existsSync filepath
+        console.warn "exists directory <#{filepath}>"
+      else
+        fs.mkdirSync filepath
       exports.make filepath, content

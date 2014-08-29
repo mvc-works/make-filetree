@@ -1,6 +1,6 @@
 {
   "name": "make-filetree",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "create file tree based on JSON",
   "main": "filetree.js",
   "directories": {
